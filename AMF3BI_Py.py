@@ -5,7 +5,6 @@ import tkinter as tk
 from tkinter import messagebox
 import modul_AMF3BI
 
-# Kötelező saját függvény az osztályon kívül a statisztikai számításokhoz
 def statisztikaosszegzes_amf3bi(book_list):
     if not book_list:
         return 0, 0.0, 0
