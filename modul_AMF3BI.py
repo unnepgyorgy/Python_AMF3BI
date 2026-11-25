@@ -6,7 +6,6 @@ class KonyvRegiszterAMF3BI:
         self.filename = filename
         self.konyvek = self.betolt_konyvek_amf3bi()
 
-    # XML fájl beolvasása és szótárrá alakítása
     def betolt_konyvek_amf3bi(self):
         if not os.path.exists(self.filename):
             return []
