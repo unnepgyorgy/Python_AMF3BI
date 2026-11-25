@@ -5,7 +5,6 @@ import tkinter as tk
 from tkinter import messagebox
 import modul_UGYP
 
-
 def statisztikaosszegzes_UGYP(book_list):
     if not book_list:
         return 0, 0.0, 0
