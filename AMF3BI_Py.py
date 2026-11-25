@@ -3,9 +3,9 @@ import math
 import random
 import tkinter as tk
 from tkinter import messagebox
-import modul_AMF3BI
+import modul_UGYP
 
-def statisztikaosszegzes_amf3bi(book_list):
+def statisztikaosszegzes_UGYP(book_list):
     if not book_list:
         return 0, 0.0, 0
     ossz_db = sum(book["menny"] for book in book_list)
@@ -13,7 +13,7 @@ def statisztikaosszegzes_amf3bi(book_list):
     atlag_ar = ossz_ertek / ossz_db if ossz_db > 0 else 0.0
     return ossz_db, atlag_ar, ossz_ertek
 
-class BookAppAMF3BI:
+class BookAppUGYP:
     def __init__(self, root):
         self.root = root
         self.root.title("Házi könyvtáram Python - AMF3BI")
@@ -37,7 +37,7 @@ class BookAppAMF3BI:
         self.listbox = tk.Listbox(root, width=70, height=12, font=("Courier", 10))
         self.listbox.pack(pady=10)
        
-        self.statisztika_gomb = tk.Button(root, text="Házi könyvtáram (AMF3BI)", command=self.statisztikak)
+        self.statisztika_gomb = tk.Button(root, text="Házi könyvtáram (UGYP)", command=self.statisztikak)
         self.statisztika_gomb.pack(pady=5)
        
         self.infogomb = tk.Button(root, text="Rendszerinfo", command=self.rendszerinfo)
@@ -49,7 +49,7 @@ class BookAppAMF3BI:
         self.listbox.delete(0, tk.END)
         self.listbox.insert(tk.END, "CÍM                            | ÁRA        | Darabszám")
         self.listbox.insert(tk.END, "-" * 60)
-        for konyv in self.backend.mindenkonyv_amf3bi():
+        for konyv in self.backend.mindenkonyv_UGYP():
             row_text = f"{konyv['cime']:<30} | {konyv['ara']:<10} | {konyv['menny']}"
             self.listbox.insert(tk.END, row_text)
     
@@ -65,7 +65,7 @@ class BookAppAMF3BI:
         int_ara = int(s_konyvar)
         int_menny = int(s_menny)
         
-        if self.backend.uj_konyv_amf3bi(s_konyvcim, int_ara, int_menny):
+        if self.backend.uj_konyv_UGYP(s_konyvcim, int_ara, int_menny):
             self.load_listbox()
             self.mezo_cime.delete(0, tk.END)
             self.mezo_ar.delete(0, tk.END)
@@ -74,8 +74,8 @@ class BookAppAMF3BI:
             messagebox.showwarning("Figyelem!", "Nincs üres című könyv !!!")
 
     def statisztikak(self):
-        mindenkonyv = self.backend.mindenkonyv_amf3bi()
-        dbszam, atlagertek, teljesertek = statisztikaosszegzes_amf3bi(mindenkonyv)
+        mindenkonyv = self.backend.mindenkonyv_UGYP()
+        dbszam, atlagertek, teljesertek = statisztikaosszegzes_UGYP(mindenkonyv)
         v_szam = random.randint(1, 1000)
         gyok = math.sqrt(v_szam)                 
         factrandom = random.randint(1, 10)
